@@ -21,6 +21,8 @@ class Artist {
             songName: songName,
             repeats: 0,
             price: 0,
+            uzdarbis: 0
+
 
         })
     }
@@ -36,26 +38,30 @@ class Artist {
     }
 
     playSong(trackNumber) {
+
         let songName = this.playList[trackNumber].songName;
         for (let i = 0; i < this.playList.length; i++) {
             const element = this.playList[i];
             if (i === trackNumber) {
-                element.repeats++
+                element.repeats++;
+                this.playList[trackNumber].uzdarbis += this.playList.price;
             }
-
+            console.log(this.playList[trackNumber].uzdarbis);
         }
-        // console.log(this.playList.repeats);
+
         console.log(`Playing song: ${songName}.`);
+
     }
 
     fortune() {
-        let totalRepeats = 0;
+        let uzdarbis = 0
         for (let i = 0; i < this.playList.length; i++) {
-            const element = this.playList[i];
-            totalRepeats += element.repeats;
+            // const this.playList = this.playList[i];
+            uzdarbis += this.playList[i].uzdarbis;
         }
 
-        let uzdarbis = totalRepeats * this.playList.price
+
+
 
         console.log(` Total lifetime wealth of ${this.vardas} is ${uzdarbis} ${this.valiuta} right now!`);
     }
